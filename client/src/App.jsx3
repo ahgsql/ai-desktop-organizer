@@ -1,0 +1,52 @@
+import React, { useState } from "react";
+import ReactBridge from "juncture-bridge";
+
+const bridge = new ReactBridge("juncture");
+
+const App = () => {
+  const [folder, setFolder] = useState("");
+  const [files, setFiles] = useState([]);
+  const [includeFolders, setIncludeFolders] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleGetFilesAndFolders = () => {
+    bridge
+      .execute("get-files-and-folders", { folder, includeFolders })
+      .then((data) => {
+        setFiles(data.parsedFiles);
+        setError(null);
+      })
+      .catch((error) => {
+        setFiles([]);
+        setError(error.message);
+      });
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={folder}
+        onChange={(e) => setFolder(e.target.value)}
+        placeholder="Klasör yolunu girin"
+      />
+      <label>
+        <input
+          type="checkbox"
+          checked={includeFolders}
+          onChange={(e) => setIncludeFolders(e.target.checked)}
+        />
+        Klasörleri dahil et
+      </label>
+      <button onClick={handleGetFilesAndFolders}>Dosyaları Getir</button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <ul>
+        {files.map((file) => (
+          <li key={file}>{file}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;

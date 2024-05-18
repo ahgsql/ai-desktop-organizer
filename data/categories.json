@@ -1,0 +1,12 @@
+[
+  {
+    "name": "personalInfoLegal",
+    "summary": "Kişi Bilgisi Çıkar",
+    "promptForAI": "İçerikteki asıl kişi adını bul. Bu kişi adı, eğer dava dilekçesiyse davacı veya davalı olabilir. Dilekçelerdeki Avukat, Av. gibi kişileri pas geç.  Davacı belirttiysem bu ismi dön. Unutma, detaylara veya konulara girmiyoruz. Aradığımız sadece bir isim soyisim. BAna kişi adı dönmelisin."
+  },
+  {
+    "name": "generalUsage",
+    "summary": "Kişi Bilgisi Çıkar",
+    "promptForAI": "Categorize by people, events, topics. Think as broadly as possible. If there are names of people, like plaintiff, return it. As a real desktop organizer, you should create folder names that are broad, comprehensive, and can contain many things.**"
+  }
+]
